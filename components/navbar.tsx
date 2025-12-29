@@ -30,3 +30,33 @@ export default function Navbar() {
               Road<span className="text-cyan-400">Watch</span>
             </a>
           </div>
+          <div className="flex lg:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(true)}
+              className="rounded-md p-2 text-gray-300 hover:text-white"
+            >
+              <Bars3Icon className="h-6 w-6" />
+            </button>
+          </div>
+
+          <div className="hidden lg:flex lg:gap-x-10">
+            {navigation.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-sm font-semibold hover:text-cyan-400 transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a
+              href="/report"
+              className="rounded-md bg-cyan-500 px-4 py-2 text-sm font-semibold text-[#020817] hover:bg-cyan-400 transition-colors"
+            >
+              Report pothole
+            </a>
+          </div>
+        </nav>
