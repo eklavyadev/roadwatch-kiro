@@ -1,32 +1,93 @@
 'use client';
 
-export default function ApprovedPotholesMap() {
-  return (
-    <div className="bg-[#0f172a] border border-slate-700 rounded-lg p-8 text-center">
-      <div className="space-y-4">
-        <div className="w-16 h-16 mx-auto bg-slate-700 rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </div>
-        
-        <div>
-          <h3 className="text-xl font-semibold text-white mb-2">
-            Interactive Map Coming Soon
-          </h3>
-          <p className="text-gray-400 text-sm max-w-md mx-auto">
-            We're building an interactive map to visualize all verified potholes. 
-            This will help authorities prioritize repairs based on location and severity.
-          </p>
-        </div>
+import { useEffect, useState } from 'react';
+import {
+  GoogleMap,
+  Marker,
+  InfoWindow,
+  useLoadScript,
+} from '@react-google-maps/api';
 
-        <div className="flex justify-center space-x-4 text-xs text-gray-500">
-          <span>📍 GPS Coordinates</span>
-          <span>🗺️ Interactive View</span>
-          <span>📊 Severity Levels</span>
-        </div>
-      </div>
-    </div>
+type Report = {
+  id: string;
+  lat: number;
+  lng: number;
+  location: string;
+  severity: number;
+};
+
+export default function ApprovedPotholesMap() {
+  const [reports, setReports] = useState<Report[]>([]);
+  const [active, setActive] = useState<Report | null>(null);
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
+  });
+
+  useEffect(() => {
+    fetch('/api/admin/reports')
+      .then((res) => res.json())
+      .then((data) =>
+        setReports(data.filter((r: any) => r.status === 'approved'))
+      );
+  }, []);
+
+  if (!isLoaded) {
+    return <p className="text-gray-400">Loading map…</p>;
+  }
+
+  if (reports.length === 0) {
+    return (
+      <p className="text-gray-400 text-sm">
+        No approved potholes to display on map yet.
+      </p>
+    );
+  }
+
+  return (
+    <GoogleMap
+      mapContainerStyle={{ width: '100%', height: '500px' }}
+      zoom={12}
+      center={{ lat: reports[0].lat, lng: reports[0].lng }}
+      onLoad={(map) => {
+        const bounds = new window.google.maps.LatLngBounds();
+        reports.forEach((r) =>
+          bounds.extend({ lat: r.lat, lng: r.lng })
+        );
+        map.fitBounds(bounds);
+      }}
+    >
+      {reports.map((r) => (
+        <Marker
+          key={r.id}
+          position={{ lat: r.lat, lng: r.lng }}
+          onClick={() => setActive(r)}
+        />
+      ))}
+
+      {active && (
+        <InfoWindow
+          position={{ lat: active.lat, lng: active.lng }}
+          onCloseClick={() => setActive(null)}
+        >
+          <div
+            style={{
+              background: '#0f172a',
+              color: 'white',
+              padding: '8px',
+              borderRadius: '6px',
+              minWidth: '180px',
+            }}
+          >
+            <p style={{ fontWeight: 'bold', marginBottom: '4px' }}>
+              {active.location}
+            </p>
+            <p style={{ fontSize: '12px', opacity: 0.8 }}>
+              Severity: {active.severity}
+            </p>
+          </div>
+        </InfoWindow>
+      )}
+    </GoogleMap>
   );
 }
