@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/navbar";
+import Navbar from "@/components/navbar";
 import { ApprovedPotholes } from "@/components/ApprovedPotholes";
 import ApprovedPotholesMap from "@/components/ApprovedPotholesMap";
 import HowItWorks from "@/components/HowItWorks";

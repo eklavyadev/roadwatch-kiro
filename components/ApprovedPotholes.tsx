@@ -14,7 +14,7 @@ type Report = {
   status: string;
 };
 
-export function ApprovedPotholes() {
+export default function ApprovedPotholes() {
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
 
