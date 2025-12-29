@@ -62,6 +62,14 @@ export default function ApprovedPotholesMap() {
           key={r.id}
           position={{ lat: r.lat, lng: r.lng }}
           onClick={() => setActive(r)}
+          icon={{
+            path: window.google.maps.SymbolPath.CIRCLE,
+            scale: 8,
+            fillColor: r.severity >= 4 ? '#ef4444' : r.severity === 3 ? '#eab308' : '#22c55e',
+            fillOpacity: 0.8,
+            strokeColor: '#ffffff',
+            strokeWeight: 2,
+          }}
         />
       ))}
 
