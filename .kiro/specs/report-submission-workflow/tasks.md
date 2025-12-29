@@ -12,7 +12,7 @@ Implementation of RoadWatch's validation-driven report submission system with st
   - Configure project structure for validation modules
   - _Requirements: All validation requirements_
 
-- [ ]* 1.1 Write property test for validation interfaces
+- [ ] 1.1 Write property test for validation interfaces
   - **Property 1: File Format Validation**
   - **Validates: Requirements 1.1**
 
@@ -23,11 +23,11 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Create coordinate bounds validation
     - _Requirements: 2.2, 2.5_
 
-  - [ ]* 2.2 Write property test for location accuracy validation
+  - [ ] 2.2 Write property test for location accuracy validation
     - **Property 3: Location Accuracy Validation**
     - **Validates: Requirements 2.2**
 
-  - [ ]* 2.3 Write property test for stale location rejection
+  - [ ] 2.3 Write property test for stale location rejection
     - **Property 4: Stale Location Rejection**
     - **Validates: Requirements 2.5**
 
@@ -37,7 +37,7 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Add retry logic for poor GPS signals
     - _Requirements: 2.3, 2.6_
 
-  - [ ]* 2.5 Write property test for best location selection
+  - [ ] 2.5 Write property test for best location selection
     - **Property 5: Best Location Selection**
     - **Validates: Requirements 2.6**
 
@@ -48,11 +48,11 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Create metadata extraction functionality
     - _Requirements: 1.1, 1.2, 1.3_
 
-  - [ ]* 3.2 Write property test for file format validation
+  - [ ] 3.2 Write property test for file format validation
     - **Property 1: File Format Validation**
     - **Validates: Requirements 1.1**
 
-  - [ ]* 3.3 Write property test for file size enforcement
+  - [ ] 3.3 Write property test for file size enforcement
     - **Property 2: File Size Enforcement**
     - **Validates: Requirements 1.2**
 
@@ -72,7 +72,7 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Create Haversine distance calculation
     - _Requirements: 4.1, 4.2, 4.6_
 
-  - [ ]* 5.2 Write property test for proximity duplicate detection
+  - [ ] 5.2 Write property test for proximity duplicate detection
     - **Property 9: Proximity Duplicate Detection**
     - **Validates: Requirements 4.1, 4.2**
 
@@ -89,15 +89,15 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Create category validation against predefined list
     - _Requirements: 3.1, 3.2, 3.4, 3.5_
 
-  - [ ]* 6.2 Write property test for mandatory field validation
+  - [ ] 6.2 Write property test for mandatory field validation
     - **Property 6: Mandatory Field Validation**
     - **Validates: Requirements 3.1, 3.2**
 
-  - [ ]* 6.3 Write property test for description length validation
+  - [ ] 6.3 Write property test for description length validation
     - **Property 7: Description Length Validation**
     - **Validates: Requirements 3.4**
 
-  - [ ]* 6.4 Write property test for category validation
+  - [ ] 6.4 Write property test for category validation
     - **Property 8: Category Validation**
     - **Validates: Requirements 3.5**
 
@@ -108,11 +108,11 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Create threshold-based publishing logic (70+ auto-publish)
     - _Requirements: 5.1, 5.2, 5.3, 5.4_
 
-  - [ ]* 7.2 Write property test for validation score calculation
+  - [ ] 7.2 Write property test for validation score calculation
     - **Property 10: Validation Score Calculation**
     - **Validates: Requirements 5.1, 5.2**
 
-  - [ ]* 7.3 Write property test for score-based publishing
+  - [ ] 7.3 Write property test for score-based publishing
     - **Property 11: Score-Based Publishing**
     - **Validates: Requirements 5.3, 5.4**
 
@@ -129,7 +129,7 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Create report persistence layer
     - _Requirements: 6.1, 6.2_
 
-  - [ ]* 8.2 Write property test for unique ID assignment
+  - [ ] 8.2 Write property test for unique ID assignment
     - **Property 12: Unique ID Assignment**
     - **Validates: Requirements 6.1**
 
@@ -139,7 +139,7 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Implement reporter history and tracking
     - _Requirements: 6.3, 6.4, 6.6_
 
-  - [ ]* 8.4 Write property test for status transition validation
+  - [ ] 8.4 Write property test for status transition validation
     - **Property 13: Status Transition Validation**
     - **Validates: Requirements 6.4**
 
@@ -150,11 +150,11 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Create rejection mechanisms for failed validations
     - _Requirements: 7.1, 7.2, 7.5, 7.6_
 
-  - [ ]* 9.2 Write property test for location accuracy rejection
+  - [ ] 9.2 Write property test for location accuracy rejection
     - **Property 14: Location Accuracy Rejection**
     - **Validates: Requirements 7.1**
 
-  - [ ]* 9.3 Write property test for rate limiting enforcement
+  - [ ] 9.3 Write property test for rate limiting enforcement
     - **Property 15: Rate Limiting Enforcement**
     - **Validates: Requirements 7.5**
 
@@ -165,7 +165,7 @@ Implementation of RoadWatch's validation-driven report submission system with st
     - Add error handling and response formatting
     - _Requirements: All requirements integration_
 
-  - [ ]* 10.2 Write integration tests for complete workflow
+  - [ ] 10.2 Write integration tests for complete workflow
     - Test end-to-end submission process
     - Verify all validation stages work together
     - Test error scenarios and edge cases
@@ -177,7 +177,7 @@ Implementation of RoadWatch's validation-driven report submission system with st
 
 ## Notes
 
-- Tasks marked with `*` are optional and can be skipped for faster MVP
+- All tasks are required for comprehensive validation from the start
 - Each task references specific requirements for traceability
 - Property tests validate universal correctness properties with 100+ iterations
 - Focus on data quality over volume throughout implementation
