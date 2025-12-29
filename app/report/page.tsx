@@ -27,3 +27,43 @@ export default function ReportPotholePage() {
   const locationResolved = lat !== null && lng !== null;
   const isAccuracyAcceptable =
     accuracy !== null && accuracy <= MAX_GPS_ACCURACY;
+  /* ---------- GET LOCATION ---------- */
+  const getLocation = () => {
+    setError('');
+
+    if (!navigator.geolocation) {
+      setError('Geolocation not supported on this device');
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
+
+        setLat(latitude);
+        setLng(longitude);
+        setAccuracy(Math.round(pos.coords.accuracy));
+
+        try {
+          const res = await fetch(
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
+          );
+
+          const data = await res.json();
+
+          if (data.status === 'OK' && data.results?.length) {
+            setAutoLocation(data.results[0].formatted_address);
+          } else {
+            setAutoLocation('GPS reported location');
+          }
+        } catch {
+          setAutoLocation('GPS reported location');
+        }
+      },
+      () => {
+        setError('Location permission denied');
+      },
+      { enableHighAccuracy: true }
+    );
+  };
