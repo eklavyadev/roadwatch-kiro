@@ -225,3 +225,36 @@ export default function ReportPotholePage() {
             )}
           </div>
         )}
+        {/* Severity */}
+        <label className="block mb-6">
+          <span className="text-sm text-gray-300">Severity</span>
+          <select
+            value={severity}
+            onChange={(e) => setSeverity(Number(e.target.value))}
+            className="mt-2 w-full bg-[#020817] border border-slate-600 p-2 rounded"
+          >
+            <option value={1}>1 – Minor</option>
+            <option value={2}>2 – Low</option>
+            <option value={3}>3 – Medium</option>
+            <option value={4}>4 – High</option>
+            <option value={5}>5 – Critical</option>
+          </select>
+        </label>
+
+        <button
+          onClick={submitReport}
+          disabled={loading || !locationResolved || !isAccuracyAcceptable}
+          className="w-full bg-white text-black py-3 rounded font-semibold disabled:opacity-60"
+        >
+          {loading ? 'Submitting…' : 'Submit Report'}
+        </button>
+
+        <p className="text-xs text-gray-400 mt-4 text-center">
+          Reports are published after automated verification.
+          <br />
+          Accurate GPS improves data quality for everyone.
+        </p>
+      </div>
+    </div>
+  );
+}
