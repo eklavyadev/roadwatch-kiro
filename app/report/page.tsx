@@ -223,6 +223,13 @@ export default function ReportPotholePage() {
                 (required accuracy ≤ {MAX_GPS_ACCURACY}m).
               </p>
             )}
+
+            {/* Mini Map Preview */}
+            <div className="mt-3 h-32 bg-slate-800 rounded border border-slate-600 flex items-center justify-center">
+              <p className="text-xs text-gray-500">
+                📍 Location: {lat!.toFixed(4)}, {lng!.toFixed(4)}
+              </p>
+            </div>
           </div>
         )}
         {/* Severity */}
