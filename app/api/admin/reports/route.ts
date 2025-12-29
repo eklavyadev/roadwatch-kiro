@@ -22,7 +22,7 @@ const mockReports = [
     severity: 3,
     governing_body: 'NYC DOT',
     created_at: '2024-01-14T14:20:00Z',
-    status: 'approved'
+    status: 'pending'
   },
   {
     id: '3',
@@ -33,6 +33,28 @@ const mockReports = [
     severity: 2,
     governing_body: 'NYC Parks',
     created_at: '2024-01-13T09:15:00Z',
+    status: 'rejected'
+  },
+  {
+    id: '4',
+    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
+    location: 'Fifth Avenue & 59th Street',
+    lat: 40.7648,
+    lng: -73.9808,
+    severity: 5,
+    governing_body: 'NYC DOT',
+    created_at: '2024-01-12T16:45:00Z',
+    status: 'pending'
+  },
+  {
+    id: '5',
+    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
+    location: 'Brooklyn Bridge Approach',
+    lat: 40.7061,
+    lng: -73.9969,
+    severity: 3,
+    governing_body: 'NYC DOT',
+    created_at: '2024-01-11T11:20:00Z',
     status: 'approved'
   }
 ];
