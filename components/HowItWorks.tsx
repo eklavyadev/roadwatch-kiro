@@ -56,3 +56,38 @@ export default function HowItWorks() {
             reliable, actionable road maintenance data.
           </p>
         </div>
+        {/* Steps */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="relative bg-[#0f172a] border border-slate-700 rounded-lg p-6"
+            >
+              {/* Step number */}
+              <span className="absolute -top-3 -left-3 h-8 w-8 rounded-full bg-cyan-500 text-[#020817] flex items-center justify-center text-sm font-bold">
+                {index + 1}
+              </span>
+
+              {/* Icon */}
+              <step.icon className="h-10 w-10 text-cyan-400 mb-4" />
+
+              {/* Content */}
+              <h3 className="text-lg font-semibold text-white mb-2">
+                {step.title}
+              </h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer note */}
+        <p className="mt-14 text-center text-sm text-gray-500">
+          AI handles verification at scale, while human oversight ensures
+          accountability and reliability.
+        </p>
+      </div>
+    </section>
+  );
+}
