@@ -33,6 +33,22 @@ export default function ReportForm({ onSubmit }: ReportFormProps) {
           <option value={IssueCategory.OTHER}>Other</option>
         </select>
       </div>
+      
+      <div>
+        <label className="block text-sm font-medium mb-2">
+          Description (minimum 10 characters)
+        </label>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-2 border rounded h-24"
+          placeholder="Describe the road issue in detail..."
+          minLength={10}
+        />
+        <div className="text-sm text-gray-500 mt-1">
+          {description.length}/10 characters minimum
+        </div>
+      </div>
     </form>
   );
 }
