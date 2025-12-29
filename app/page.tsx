@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "@/components/navbar";
-import { ApprovedPotholes } from "@/components/ApprovedPotholes";
-import ApprovedPotholesMap from "@/components/ApprovedPotholesMap";
-import HowItWorks from "@/components/HowItWorks";
-import Hero from "@/components/Hero";
+import Navbar from "../components/navbar";
+import ApprovedPotholes from "../components/ApprovedPotholes";
+import ApprovedPotholesMap from "../components/ApprovedPotholesMap";
+import HowItWorks from "../components/HowItWorks";
+import Hero from "../components/Hero";
 
 export default function HomePage() {
   return (
