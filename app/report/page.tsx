@@ -165,3 +165,63 @@ export default function ReportPotholePage() {
             />
           </div>
         )}
+        {/* Landmark */}
+        <label className="block mb-4">
+          <span className="text-sm text-gray-300">
+            Nearest landmark (optional)
+          </span>
+          <input
+            type="text"
+            placeholder="e.g. Near bus stop, opposite school"
+            value={landmark}
+            onChange={(e) => setLandmark(e.target.value)}
+            className="mt-2 w-full rounded bg-[#020817] border border-slate-600 p-2"
+          />
+        </label>
+
+        {/* Auto location */}
+        <label className="block mb-4">
+          <span className="text-sm text-gray-300">
+            📍 Auto‑detected area (from GPS)
+          </span>
+          <input
+            type="text"
+            value={autoLocation}
+            disabled
+            className="mt-2 w-full rounded bg-[#020817] border border-slate-600 p-2 text-gray-400 cursor-not-allowed"
+          />
+        </label>
+
+        {!locationResolved && (
+          <button
+            onClick={getLocation}
+            className="mb-4 bg-cyan-500 text-black px-4 py-2 rounded text-sm font-semibold"
+          >
+            📍 Detect Location
+          </button>
+        )}
+
+        {locationResolved && accuracy !== null && (
+          <div className="mb-4 text-xs text-gray-400 space-y-1">
+            <p>
+              Lat: {lat!.toFixed(5)}, Lng: {lng!.toFixed(5)}
+            </p>
+            <p>📡 GPS Accuracy: ± {accuracy} meters</p>
+
+            {!isAccuracyAcceptable && (
+              <p className="text-red-400">
+                Location accuracy is too low. Try moving to an open area or reset
+                GPS via
+                <a
+                  href="https://maps.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-cyan-400 mx-1"
+                >
+                  maps.google.com
+                </a>
+                (required accuracy ≤ {MAX_GPS_ACCURACY}m).
+              </p>
+            )}
+          </div>
+        )}
