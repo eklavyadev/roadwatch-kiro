@@ -174,3 +174,91 @@ export default function AdminPage() {
                   {new Date(r.created_at).toLocaleString()}
                 </p>
               </div>
+              {/* Actions */}
+              <div className="p-4 border-t border-slate-700 space-y-2">
+                {r.status === 'pending' && (
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => updateStatus(r.id, 'approved')}
+                      className="flex-1 bg-green-600 py-2 rounded"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      onClick={() => updateStatus(r.id, 'rejected')}
+                      className="flex-1 bg-red-600 py-2 rounded"
+                    >
+                      Reject
+                    </button>
+                  </div>
+                )}
+
+                {r.status === 'approved' && (
+                  <>
+                    <span className="text-green-400 font-semibold">
+                      ✔ Approved
+                    </span>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => updateStatus(r.id, 'pending')}
+                        className="flex-1 bg-slate-600 hover:bg-slate-700 text-white py-1 rounded text-sm"
+                      >
+                        Move to Pending
+                      </button>
+
+                      <button
+                        onClick={() => updateStatus(r.id, 'rejected')}
+                        className="flex-1 bg-red-600 hover:bg-red-700 text-white py-1 rounded text-sm"
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  </>
+                )}
+
+                {r.status === 'rejected' && (
+                  <>
+                    <span className="text-red-400 font-semibold">
+                      ✖ Rejected
+                    </span>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => updateStatus(r.id, 'pending')}
+                        className="flex-1 bg-slate-600 hover:bg-slate-700 text-white py-1 rounded text-sm"
+                      >
+                        Move to Pending
+                      </button>
+
+                      <button
+                        onClick={() => updateStatus(r.id, 'approved')}
+                        className="flex-1 bg-green-600 hover:bg-green-700 text-white py-1 rounded text-sm"
+                      >
+                        Approve
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={() => deleteReport(r.id)}
+                      className="w-full border border-red-500 text-red-400 hover:bg-red-600 hover:text-white py-2 rounded text-sm font-semibold"
+                    >
+                      🗑 Delete Permanently
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Toast */}
+      {toast && (
+        <div className="fixed bottom-6 right-6 bg-black border border-slate-700 text-white px-4 py-2 rounded shadow-lg">
+          {toast}
+        </div>
+      )}
+    </div>
+  );
+}
