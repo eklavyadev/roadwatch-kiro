@@ -49,6 +49,31 @@ export default function ReportForm({ onSubmit }: ReportFormProps) {
           {description.length}/10 characters minimum
         </div>
       </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-2">
+          Photos (required)
+        </label>
+        <input
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          multiple
+          onChange={(e) => {
+            if (e.target.files) {
+              setPhotos(Array.from(e.target.files));
+            }
+          }}
+          className="w-full p-2 border rounded"
+        />
+        <div className="text-sm text-gray-500 mt-1">
+          Accepted formats: JPEG, PNG, WebP (max 5MB each)
+        </div>
+        {photos.length > 0 && (
+          <div className="mt-2">
+            <p className="text-sm font-medium">{photos.length} photo(s) selected</p>
+          </div>
+        )}
+      </div>
     </form>
   );
 }
