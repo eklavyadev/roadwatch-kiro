@@ -77,3 +77,27 @@ export default function AdminPage() {
   const filteredReports = reports.filter(
     (r) => r.status === activeTab
   );
+  /* ---------- LOGIN ---------- */
+  if (!auth) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#020817]">
+        <div className="border border-slate-700 p-6 rounded w-72 bg-[#0f172a]">
+          <h2 className="text-lg font-bold mb-4 text-white">
+            Admin Login
+          </h2>
+          <input
+            type="password"
+            placeholder="Admin password"
+            className="border border-slate-600 bg-[#020817] text-white p-2 w-full mb-3 rounded"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            onClick={login}
+            className="w-full bg-white text-black py-2 rounded font-medium"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    );
+  }
