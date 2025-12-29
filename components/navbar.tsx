@@ -8,7 +8,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline'
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'How it works', href: '/#how' },
-  { name: 'Map', href: '/#map' },
+  { name: 'Map', href: '/map' },
   { name: 'API Docs', href: '/api' },
   { name: 'Tech Stack', href: '/tech' },
   { name: 'Impact', href: '/impact' },
