@@ -56,3 +56,60 @@ export default function ApiDocsPage() {
                             });`}
                     </pre>
                 </section>
+                {/* Example Response */}
+                <section className="bg-[#0f172a] border border-slate-700 rounded p-6">
+                    <h2 className="text-xl font-semibold mb-4">Example Response</h2>
+
+                    <pre className="bg-black rounded p-4 text-sm overflow-x-auto text-gray-200">
+                        {`[
+  {
+    "id": 12,
+    "image_url": "https://.../reports/pothole.jpg",
+    "location": "Near Borjhar Airport Gate",
+    "lat": 26.1062,
+    "lng": 91.5859,
+    "severity": 4,
+    "governing_body": "Municipal Corporation",
+    "status": "approved",
+    "created_at": "2025-12-20T15:42:11.123Z"
+  }
+]`}
+                    </pre>
+                </section>
+
+                {/* Fields */}
+                <section className="bg-[#0f172a] border border-slate-700 rounded p-6">
+                    <h2 className="text-xl font-semibold mb-4">Response Fields</h2>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-300">
+                        <p><span className="text-white font-medium">id</span> – Unique report ID</p>
+                        <p><span className="text-white font-medium">image_url</span> – Public image URL</p>
+                        <p><span className="text-white font-medium">location</span> – Location description</p>
+                        <p><span className="text-white font-medium">lat, lng</span> – GPS coordinates</p>
+                        <p><span className="text-white font-medium">severity</span> – Scale from 1–5</p>
+                        <p><span className="text-white font-medium">governing_body</span> – Responsible authority</p>
+                        <p><span className="text-white font-medium">status</span> – approved / pending / rejected</p>
+                        <p><span className="text-white font-medium">created_at</span> – Timestamp</p>
+                    </div>
+                </section>
+
+                {/* Usage */}
+                <section className="bg-[#0f172a] border border-slate-700 rounded p-6">
+                    <h2 className="text-xl font-semibold mb-3">Recommended Usage</h2>
+                    <ul className="text-sm text-gray-300 space-y-2 list-disc list-inside">
+                        <li>Filter approved reports only</li>
+                        <li>Display on maps or dashboards</li>
+                        <li>Use severity to prioritize issues</li>
+                        <li>Respect public data usage</li>
+                    </ul>
+                </section>
+
+                {/* Footer */}
+                <p className="text-center text-xs text-gray-500">
+                    RoadWatch Public API · Read‑only · Open Data Initiative
+                </p>
+            </div>
+        </div>
+        </div>
+    );
+}
