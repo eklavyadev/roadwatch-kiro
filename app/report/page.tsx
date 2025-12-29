@@ -125,3 +125,43 @@ export default function ReportPotholePage() {
     setSeverity(3);
     setSuccess(true);
   };
+  return (
+    <div className="min-h-screen bg-[#020817] text-white px-6 py-20">
+      <div className="mx-auto max-w-xl bg-[#0f172a] p-6 rounded border border-slate-700">
+        <h1 className="text-2xl font-bold mb-6">Report a Pothole</h1>
+
+        {success && (
+          <div className="mb-4 rounded bg-green-600/20 border border-green-600 p-3 text-sm text-green-400">
+            ✅ Pothole reported successfully.
+          </div>
+        )}
+
+        {error && (
+          <div className="mb-4 rounded bg-red-600/20 border border-red-600 p-3 text-sm text-red-400">
+            ⚠️ {error}
+          </div>
+        )}
+
+        {/* Image */}
+        <label className="block mb-4">
+          <span className="text-sm text-gray-300">
+            Capture / Upload photo (max 10MB)
+          </span>
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={(e) => setImage(e.target.files?.[0] || null)}
+            className="mt-2 block w-full text-sm"
+          />
+        </label>
+
+        {image && (
+          <div className="mb-4">
+            <img
+              src={URL.createObjectURL(image)}
+              alt="preview"
+              className="w-full h-48 object-contain rounded border border-slate-600"
+            />
+          </div>
+        )}
