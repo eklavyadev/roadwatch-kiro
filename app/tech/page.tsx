@@ -92,3 +92,81 @@ export default function TechStackPage() {
               GDG requirement of meaningful Google technology usage.
             </p>
           </section>
+          {/* Browser APIs */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">
+              Browser & Platform APIs
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <TechCard
+                title="Camera API"
+                desc="Allows users to capture pothole images directly from their device for authentic reporting."
+              />
+              <TechCard
+                title="Geolocation API"
+                desc="Automatically captures precise latitude and longitude to ensure accurate issue mapping."
+              />
+            </div>
+          </section>
+
+          {/* Public API */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">
+              Open Data & Public API
+            </h2>
+
+            <div className="bg-[#0f172a] border border-slate-700 rounded p-6 text-gray-300 text-sm space-y-2">
+              <p>• Public REST API for accessing approved pothole data</p>
+              <p>• Enables researchers, civic bodies, and developers to reuse data</p>
+              <p>• Promotes transparency and third‑party innovation</p>
+            </div>
+          </section>
+
+          {/* Architecture */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-6">
+              System Architecture
+            </h2>
+
+            <div className="bg-[#0f172a] border border-slate-700 rounded p-6 text-gray-300 text-sm space-y-2">
+              <p>• User captures pothole image and location</p>
+              <p>• Backend uploads image to secure storage</p>
+              <p>• Report stored in PostgreSQL with pending status</p>
+              <p>• AI service automatically reviews the image</p>
+              <p>• Status updated to approved or rejected</p>
+              <p>• Approved reports appear on public map & API</p>
+              <p>• Admin panel allows manual overrides if needed</p>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <p className="text-center text-xs text-gray-500">
+            Built for civic impact · AI‑powered moderation · Open & scalable
+            architecture
+          </p>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ---------- Helper Component ---------- */
+function TechCard({
+  title,
+  desc,
+}: {
+  title: string;
+  desc: string;
+}) {
+  return (
+    <div className="bg-[#0f172a] border border-slate-700 rounded p-5">
+      <h3 className="text-lg font-semibold text-white mb-2">
+        {title}
+      </h3>
+      <p className="text-sm text-gray-400 leading-relaxed">
+        {desc}
+      </p>
+    </div>
+  );
+}
