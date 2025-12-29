@@ -51,3 +51,67 @@ export function ApprovedPotholes() {
       </div>
     );
   }
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {reports.slice(0, 6).map((r) => (
+        <div
+          key={r.id}
+          className="bg-[#0f172a] border border-slate-700 rounded overflow-hidden"
+        >
+          {/* Image */}
+          <div className="bg-black">
+            <img
+              src={r.image_url}
+              alt="pothole"
+              className="h-48 w-full object-cover"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="p-4 space-y-2 text-sm text-slate-300">
+            <p className="text-white font-semibold">
+              {r.location}
+            </p>
+
+            <p>
+              <span className="text-white font-medium">
+                Coordinates:
+              </span>{' '}
+              {r.lat.toFixed(5)}, {r.lng.toFixed(5)}
+            </p>
+
+            <p>
+              <span className="text-white font-medium">
+                Severity:
+              </span>{' '}
+              <span
+                className={`px-2 py-1 rounded text-xs font-semibold ${
+                  r.severity >= 4
+                    ? 'bg-red-600 text-white'
+                    : r.severity === 3
+                    ? 'bg-yellow-500 text-black'
+                    : 'bg-green-600 text-white'
+                }`}
+              >
+                {r.severity}
+              </span>
+            </p>
+
+            <p className="text-xs text-slate-400">
+              Reported on:{' '}
+              {new Date(r.created_at).toLocaleDateString()}
+            </p>
+
+            <a
+              href={`https://www.google.com/maps?q=${r.lat},${r.lng}`}
+              target="_blank"
+              className="text-cyan-400 text-xs underline"
+            >
+              View on Google Maps
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
