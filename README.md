@@ -7,6 +7,7 @@ A geo-tagged platform for reporting and tracking potholes to improve road safety
 - **High-Precision GPS**: ≤200m accuracy requirement with retry logic
 - **Smart Duplicate Prevention**: 50m radius + 24hr window detection
 - **AI-Powered Verification**: Automated image analysis for spam filtering
+- **Google Maps Integration**: Interactive map with severity-based colored markers
 - **Admin Dashboard**: Approve/reject reports with status management
 - **Public API**: Open data access for transparency and third-party innovation
 - **Dark Theme UI**: Professional interface with cyan accents
@@ -107,9 +108,10 @@ npm run dev
 ## Usage
 
 1. **Report Submission**: Navigate to `/report` to submit a new pothole report
-2. **Admin Panel**: Access `/admin` with the admin password to manage reports
-3. **Public Data**: Use the API endpoints to access verified pothole data
-4. **Documentation**: Visit `/api` for API documentation
+2. **Interactive Map**: Visit `/map` to view all verified reports on Google Maps
+3. **Admin Panel**: Access `/admin` with the admin password to manage reports
+4. **Public Data**: Use the API endpoints to access verified pothole data
+5. **Documentation**: Visit `/api` for API documentation
 
 ## Validation System
 
