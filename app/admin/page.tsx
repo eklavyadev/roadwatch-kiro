@@ -37,3 +37,43 @@ export default function AdminPage() {
       showToast('❌ Wrong password');
     }
   };
+  /* ---------- DATA ---------- */
+  const fetchReports = async () => {
+    const res = await fetch('/api/admin/reports');
+    const data = await res.json();
+    setReports(data);
+  };
+
+  const updateStatus = async (
+    id: string,
+    status: 'pending' | 'approved' | 'rejected'
+  ) => {
+    await fetch('/api/admin/update', {
+      method: 'POST',
+      body: JSON.stringify({ id, status }),
+    });
+    fetchReports();
+    showToast(`Status updated to ${status}`);
+  };
+
+  const deleteReport = async (id: string) => {
+    const ok = confirm(
+      'This will permanently delete the rejected report. Continue?'
+    );
+    if (!ok) return;
+
+    const res = await fetch(`/api/admin/reports/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (res.ok) {
+      fetchReports();
+      showToast('🗑 Report deleted');
+    } else {
+      showToast('❌ Delete failed');
+    }
+  };
+
+  const filteredReports = reports.filter(
+    (r) => r.status === activeTab
+  );
