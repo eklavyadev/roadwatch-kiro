@@ -24,6 +24,13 @@ export default function ReportForm({ onSubmit }: ReportFormProps) {
           className="w-full p-2 border rounded"
         >
           <option value="">Select category...</option>
+          <option value={IssueCategory.POTHOLE}>Pothole</option>
+          <option value={IssueCategory.TRAFFIC_LIGHT}>Traffic Light</option>
+          <option value={IssueCategory.ROAD_DAMAGE}>Road Damage</option>
+          <option value={IssueCategory.SIGNAGE}>Signage</option>
+          <option value={IssueCategory.DRAINAGE}>Drainage</option>
+          <option value={IssueCategory.DEBRIS}>Debris</option>
+          <option value={IssueCategory.OTHER}>Other</option>
         </select>
       </div>
     </form>
