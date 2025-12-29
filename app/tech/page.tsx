@@ -69,7 +69,7 @@ export default function TechStackPage() {
           {/* Google Tech */}
           <section className="bg-[#0f172a] border border-cyan-500/40 rounded p-6">
             <h2 className="text-2xl font-semibold mb-4 text-cyan-400">
-              Google Technology Used
+              Google Technology Integration for HackXIOS
             </h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-300">
@@ -77,19 +77,25 @@ export default function TechStackPage() {
                 <span className="text-white font-medium">
                   Google Maps JavaScript API
                 </span>{" "}
-                – Interactive visualization of verified pothole locations
+                – Interactive visualization of verified pothole locations with real-time data
               </li>
               <li>
                 <span className="text-white font-medium">
-                  Google Maps Markers & Bounds
+                  Google Maps Markers & Info Windows
                 </span>{" "}
-                – Clustered map view for city‑level road issue analysis
+                – Severity-based color coding and detailed popup information for each report
+              </li>
+              <li>
+                <span className="text-white font-medium">
+                  Google Maps Bounds & Clustering
+                </span>{" "}
+                – Automatic map positioning and efficient display of multiple reports
               </li>
             </ul>
 
             <p className="mt-4 text-sm text-gray-400">
-              Google Maps is used as a core visualization layer, fulfilling the
-              GDG requirement of meaningful Google technology usage.
+              Google Maps serves as the core visualization platform, enabling citizens and authorities 
+              to view verified road issues with precise geographic context and severity indicators for HackXIOS.
             </p>
           </section>
           {/* Browser APIs */}
@@ -142,7 +148,7 @@ export default function TechStackPage() {
 
           {/* Footer */}
           <p className="text-center text-xs text-gray-500">
-            Built for civic impact · AI‑powered moderation · Open & scalable
+            Built for HackXIOS · AI‑powered moderation · Open & scalable
             architecture
           </p>
         </div>
