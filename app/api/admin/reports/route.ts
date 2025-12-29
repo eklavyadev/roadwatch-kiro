@@ -1,74 +1,25 @@
 import { NextResponse } from 'next/server';
+import { Pool } from 'pg';
 
-// Mock data for demo purposes
-const mockReports = [
-  {
-    id: '1',
-    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-    location: 'Main Street near City Hall',
-    lat: 40.7128,
-    lng: -74.0060,
-    severity: 4,
-    governing_body: 'NYC DOT',
-    created_at: '2024-01-15T10:30:00Z',
-    status: 'approved'
-  },
-  {
-    id: '2',
-    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-    location: 'Broadway & 42nd Street',
-    lat: 40.7580,
-    lng: -73.9855,
-    severity: 3,
-    governing_body: 'NYC DOT',
-    created_at: '2024-01-14T14:20:00Z',
-    status: 'pending'
-  },
-  {
-    id: '3',
-    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-    location: 'Central Park West',
-    lat: 40.7829,
-    lng: -73.9654,
-    severity: 2,
-    governing_body: 'NYC Parks',
-    created_at: '2024-01-13T09:15:00Z',
-    status: 'rejected'
-  },
-  {
-    id: '4',
-    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-    location: 'Fifth Avenue & 59th Street',
-    lat: 40.7648,
-    lng: -73.9808,
-    severity: 5,
-    governing_body: 'NYC DOT',
-    created_at: '2024-01-12T16:45:00Z',
-    status: 'pending'
-  },
-  {
-    id: '5',
-    image_url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-    location: 'Brooklyn Bridge Approach',
-    lat: 40.7061,
-    lng: -73.9969,
-    severity: 3,
-    governing_body: 'NYC DOT',
-    created_at: '2024-01-11T11:20:00Z',
-    status: 'approved'
-  }
-];
+const pool = new Pool({
+  connectionString: process.env.DB_URI,
+  ssl: { rejectUnauthorized: false },
+  max: 1, // VERY important for serverless
+});
 
 export async function GET() {
   try {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    return NextResponse.json(mockReports);
-  } catch (err) {
-    console.error('API ERROR:', err);
+    const res = await pool.query(
+      "SELECT * FROM reports ORDER BY created_at DESC"
+    );
+    return NextResponse.json(res.rows);
+  } catch (error: any) {
+    console.error('FULL DB ERROR:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch reports' },
+      {
+        message: 'Database error',
+        detail: error.message,
+      },
       { status: 500 }
     );
   }
