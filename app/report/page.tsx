@@ -67,3 +67,61 @@ export default function ReportPotholePage() {
       { enableHighAccuracy: true }
     );
   };
+  /* ---------- SUBMIT ---------- */
+  const submitReport = async () => {
+    setError('');
+
+    if (!image || !locationResolved) {
+      setError('Please upload an image and detect location');
+      return;
+    }
+
+    if (!isAccuracyAcceptable) {
+      setError(
+        'Location accuracy is too low. Please retry from an open area.'
+      );
+      return;
+    }
+
+    if (image.size > MAX_SIZE_MB * 1024 * 1024) {
+      setError('Please upload an image smaller than 10MB');
+      return;
+    }
+
+    setLoading(true);
+    setSuccess(false);
+
+    const finalLocation = landmark.trim()
+      ? `(${landmark.trim()}) ${autoLocation}`
+      : autoLocation;
+
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('location', finalLocation);
+    formData.append('lat', String(lat));
+    formData.append('lng', String(lng));
+    formData.append('severity', String(severity));
+
+    const res = await fetch('/api/report/create', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await res.json();
+    setLoading(false);
+
+    if (!res.ok) {
+      setError(data.error || 'Something went wrong');
+      return;
+    }
+
+    // Reset
+    setImage(null);
+    setLandmark('');
+    setLat(null);
+    setLng(null);
+    setAccuracy(null);
+    setAutoLocation('Not detected yet');
+    setSeverity(3);
+    setSuccess(true);
+  };
