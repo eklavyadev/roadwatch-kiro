@@ -60,3 +60,40 @@ export default function Navbar() {
             </a>
           </div>
         </nav>
+        {/* MOBILE MENU */}
+        <Dialog
+          open={mobileMenuOpen}
+          onClose={setMobileMenuOpen}
+          className="lg:hidden"
+        >
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full bg-[#020817] p-6 sm:max-w-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-lg font-semibold">
+                Road<span className="text-cyan-400">Watch</span>
+              </span>
+
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-md p-2 text-gray-300 hover:text-white"
+              >
+                <XMarkIcon className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div className="mt-8 space-y-4">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block rounded-lg px-3 py-2 text-base font-semibold hover:bg-white/5"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </DialogPanel>
+        </Dialog>
+      </header>
+    </div>
+  )
+}
