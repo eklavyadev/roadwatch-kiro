@@ -193,7 +193,7 @@
 *"The result? A production-ready application with AI validation, real-time maps, admin panels, and mobile responsiveness. Kiro didn't just help me code faster - it helped me build better."*
 
 ### Closing (15 seconds)
-*"RoadWatch + Kiro IDE = The future of hackathon development. When AI meets civic innovation, amazing things happen."*
+*"RoadWatch + Kiro IDE = The future of hackathon development. When AI meets civic innovation, amazing things happen in 2025."*
 
 ## 📈 Conclusion
 
@@ -203,4 +203,4 @@ Kiro IDE transformed my HackXIOS experience from a coding marathon into a strate
 
 ---
 
-*Built with ❤️ using Kiro IDE for HackXIOS 2024*
+*Built with ❤️ using Kiro IDE for HackXIOS 2025*
